@@ -1,1 +1,1 @@
-export { default as Example } from './example/example';
+export { default as Main } from "./main/main";
