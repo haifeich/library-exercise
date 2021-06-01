@@ -1,0 +1,134 @@
+openapi: 3.0.2
+info:
+  title: Library API
+  description: A spimple Library API
+  version: '1.0'
+
+servers:
+  - url: https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1
+  
+tags: 
+  - name: book
+
+paths:
+  /books:
+    get:
+      tags:
+        - book
+      summary: Returns a list of books
+      responses:
+        200:
+          description: A JSON array of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      tags:
+        - book
+      summary: Add a new book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+  /books/{id}:
+    get:
+      tags:
+        - book
+      summary: Returns a single book with specified ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The ID of a book
+      responses:
+        200:
+          description: A JSON object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+    put:
+      tags:
+        - book
+      summary: Updates a book with specified ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The ID of a book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    delete:
+      tags:
+        - book
+      summary: Deleted a book with specified ID
+      parameters: 
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: The ID of a book
+      responses:
+        200:
+          description: OK
+
+components:
+  schemas:
+    Book:
+      properties:
+        id:
+          type: integer
+          description: The ID of the book
+          example: 42
+        title:
+          type: string
+          description: The title of the book
+          example: 'Fantastic Beasts and Where to Find Them'
+        author:
+          type: string
+          description: The author of the book
+          example: 'J. K. Rowling '
+        total_amount:
+          type: integer
+          description: The total amount, how many books are available in the library stock
+          example: 10
+        pages:
+          type: integer
+          description: The amount of pages of the book
+          example: 128
+        isbn:
+          type: string
+          description: The International Standard Book Number of the book
+          example: '9781408880715'
