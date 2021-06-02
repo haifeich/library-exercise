@@ -99,6 +99,22 @@ h2 {
   margin: 1rem auto;
 }
 
+footer {
+  background-color: #004d9f;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5rem;
+  padding: 1rem;
+}
+footer h2 {
+  color: #fff;
+  margin: 0;
+}
+footer p {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
 @media (min-width: 36em) and (max-width: 62em) {
   ul.bookcontainer {
     grid-template-columns: 1fr 1fr;
