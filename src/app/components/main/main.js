@@ -15,9 +15,9 @@ const Main = () => {
   }, []);
 
   return (
-    <>
+    <main>
       <h2>All the books</h2>
-      <ul>
+      <ul className="bookcontainer">
         {books.map((book) => {
           const { id, title, author, total_amount, pages, isbn } = book;
           return (
@@ -33,7 +33,7 @@ const Main = () => {
           );
         })}
       </ul>
-    </>
+    </main>
   );
 };
 

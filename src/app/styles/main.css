@@ -16,26 +16,59 @@ html {
 body {
   background-color: #f8f8f8;
 }
-
 ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+.button {
+  background: transparent;
+  border: 0.2rem solid #014d9f;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+.button:hover {
+  background-color: #014d9f;
+  color: #fff;
+}
+nav {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  color: #014d9f;
+  margin: 1rem 0 1rem 2rem;
+}
+ul.linkscontainer {
+  display: flex;
+  margin: 1rem 0;
+}
+.linkscontainer a {
+  display: block;
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+}
+div.buttoncontainer {
+  margin: 1rem;
+}
+ul.bookcontainer {
   display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
-  list-style-type: none;
   margin-bottom: 2rem;
 }
 ul .book:hover {
   transform: scale(1.01);
 }
 
-#app {
+main {
   margin: 0 1.5rem;
-}
-
-h1 {
-  color: #014d9f;
-  margin: 1rem 0 1rem 2rem;
 }
 
 h2 {
@@ -67,13 +100,13 @@ h2 {
 }
 
 @media (min-width: 36em) and (max-width: 62em) {
-  ul {
+  ul.bookcontainer {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 62.063em) {
-  ul {
+  ul.bookcontainer {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
