@@ -23,10 +23,12 @@ const Main = () => {
           return (
             <li key={id} className="book">
               <h4>{title}</h4>
-              <p>{`Author: ${author}`}</p>
-              <p>{`Pages: ${pages}`}</p>
-              <p>{`Total: ${total_amount}`}</p>
-              <p>{`ISBN: ${isbn}`}</p>
+              <div>
+                <p>{`Author: ${author}`}</p>
+                <p>{`Pages: ${pages}`}</p>
+                <p>{`Total: ${total_amount}`}</p>
+                <p>{`ISBN: ${isbn}`}</p>
+              </div>
             </li>
           );
         })}

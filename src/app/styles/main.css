@@ -25,6 +25,9 @@ ul {
   list-style-type: none;
   margin-bottom: 2rem;
 }
+ul .book:hover {
+  transform: scale(1.01);
+}
 
 #app {
   margin: 0 1.5rem;
@@ -36,18 +39,27 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 5rem auto;
   text-align: center;
 }
 
 .book {
-  background-color: aquamarine;
+  box-shadow: 0.2rem 0.5rem 0.3rem 0 rgba(0, 0, 0, 0.5);
+  background-color: #cfedeb;
+  display: flex;
+  flex-flow: column wrap;
   padding: 1rem;
 }
-h4 {
+
+.book h4 {
+  border-bottom: 0.5px dotted #617d98;
+  flex: 1;
   font-size: 1.5rem;
   min-height: 4rem;
+}
+.book div {
+  flex: 2;
 }
 .book p {
   font-size: 1rem;
