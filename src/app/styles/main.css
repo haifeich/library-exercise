@@ -15,6 +15,7 @@ html {
 }
 body {
   background-color: #f8f8f8;
+  height: 100vh;
 }
 ul {
   list-style-type: none;
@@ -33,6 +34,14 @@ a {
 .button:hover {
   background-color: #014d9f;
   color: #fff;
+}
+.py-4 {
+  height: 100%;
+}
+#app {
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto 1fr auto;
 }
 nav {
   background-color: #fff;

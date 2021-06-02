@@ -9,7 +9,7 @@ const Nav = () => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/">About</a>
+          <a href="/add">Add</a>
         </li>
       </ul>
       <div className="buttoncontainer">
