@@ -18,9 +18,7 @@ class RootContainer extends React.PureComponent {
           <Route path="/add">
             <Add />
           </Route>
-          <Route path="/book/:id">
-            <Editbook />
-          </Route>
+          <Route path="/book/:ID" children={<Editbook />}></Route>
         </Switch>
 
         <Footer />

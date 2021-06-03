@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const url = "https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books";
 const Main = () => {
   const [books, setBooks] = useState([]);
   const getBooks = async () => {
     const response = await fetch(url);
-    console.log(response);
     const books = await response.json();
     setBooks(books);
-    console.log(books);
   };
   useEffect(() => {
     getBooks();
@@ -28,6 +27,11 @@ const Main = () => {
                 <p>{`Pages: ${pages}`}</p>
                 <p>{`Total: ${total_amount}`}</p>
                 <p>{`ISBN: ${isbn}`}</p>
+              </div>
+              <div>
+                <Link to={`/book/${id}`} className="button">
+                  Edit
+                </Link>
               </div>
             </li>
           );
