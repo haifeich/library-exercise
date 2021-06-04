@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const url = "https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books";
+const url = `https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books`;
 
 const Editbook = () => {
   const { ID } = useParams();
-  const [editBook, setEditBook] = useState({}); //get the info of the chosen book, get keep the original value.
+  const [editBook, setEditBook] = useState({});
   const [change, setChange] = useState({
-    title: "", // set all the editable parameteres.
+    title: "",
     author: "",
-    pages: "", // should be number, but will not be able to edit, if input value is fixed to a number
+    pages: "",
     total_amount: "",
     isbn: "",
   });
@@ -24,12 +24,14 @@ const Editbook = () => {
     console.log(change);
     console.log(editBook);
     const info = {
-      ...change,
-      pages: parseInt(change.pages),
-      total_amount: parseInt(change.total_amount),
+      title: change.title.trim() || editBook.title,
+      author: change.author.trim() || editBook.author,
+      pages: parseInt(change.pages) || editBook.pages,
+      total_amount: parseInt(change.total_amount) || editBook.total_amount,
+      isbn: change.isbn.trim() || editBook.isbn,
     };
-    console.log(info);
-    fetch(`https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books/${ID}`, {
+
+    fetch(`${url}/${ID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -42,14 +44,13 @@ const Editbook = () => {
       });
   };
 
-  const getBooks = async () => {
-    const response = await fetch(url);
-    const books = await response.json();
-    const editBook = await books.find((book) => book.id === ID);
+  const getEditBook = async () => {
+    const response = await fetch(`${url}/${ID}`);
+    const editBook = await response.json();
     setEditBook(editBook);
   };
   useEffect(() => {
-    getBooks();
+    getEditBook();
   }, []);
 
   return (
@@ -75,21 +76,21 @@ const Editbook = () => {
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="page">Page:</label>
+        <label htmlFor="pages">Page:</label>
         <input
           type="text"
-          name="page"
-          id="page"
+          name="pages"
+          id="pages"
           placeholder={editBook.pages}
           value={change.pages}
           onChange={handleChange}
         />
         <br />
-        <label htmlFor="total">Total:</label>
+        <label htmlFor="total_amount">Total:</label>
         <input
           type="text"
-          name="total"
-          id="total"
+          name="total_amount"
+          id="total_amount"
           placeholder={editBook.total_amount}
           value={change.total_amount}
           onChange={handleChange}
