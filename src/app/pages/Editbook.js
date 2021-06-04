@@ -17,12 +17,10 @@ const Editbook = () => {
     const name = e.target.name;
     const value = e.target.value;
     setChange({ ...change, [name]: value });
-    console.log(name, value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(change);
-    console.log(editBook);
+
     const info = {
       title: change.title.trim() || editBook.title,
       author: change.author.trim() || editBook.author,
@@ -31,17 +29,21 @@ const Editbook = () => {
       isbn: change.isbn.trim() || editBook.isbn,
     };
 
-    fetch(`${url}/${ID}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(info),
-    })
-      .then((response) => response.json())
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    if (info.isbn.length == 10 || info.isbn.length == 13) {
+      fetch(`${url}/${ID}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(info),
+      })
+        .then((response) => response.json())
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } else {
+      alert("ISBNshould be 10 or 13 numbers");
+    }
   };
 
   const getEditBook = async () => {
@@ -78,7 +80,7 @@ const Editbook = () => {
         <br />
         <label htmlFor="pages">Page:</label>
         <input
-          type="text"
+          type="number"
           name="pages"
           id="pages"
           placeholder={editBook.pages}
@@ -88,7 +90,7 @@ const Editbook = () => {
         <br />
         <label htmlFor="total_amount">Total:</label>
         <input
-          type="text"
+          type="number"
           name="total_amount"
           id="total_amount"
           placeholder={editBook.total_amount}
@@ -98,7 +100,7 @@ const Editbook = () => {
         <br />
         <label htmlFor="isbn">ISBN:</label>
         <input
-          type="text"
+          type="number"
           name="isbn"
           id="isbn"
           placeholder={editBook.isbn}

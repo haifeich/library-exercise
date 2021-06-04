@@ -144,6 +144,34 @@ footer p {
   margin: 1rem;
   width: 80%;
 }
+
+/*input style*/
+input[type="text"],
+input[type="number"] {
+  border: 0.1rem solid #ccc;
+  border-radius: 0.4rem;
+  color: rgb(248, 47, 47);
+  font-size: 1.5rem;
+  padding: 1.5rem;
+}
+::placeholder {
+  color: #000;
+  opacity: 1;
+}
+input:focus::placeholder {
+  color: transparent;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 @media (min-width: 36em) and (max-width: 62em) {
   ul.bookcontainer {
     grid-template-columns: 1fr 1fr;
