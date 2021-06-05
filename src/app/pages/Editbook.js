@@ -70,7 +70,7 @@ const Editbook = () => {
           placeholder={editBook.title}
           value={change.title}
           onChange={handleChange}
-        />{" "}
+        />
         <br />
         <label htmlFor="author">Author:</label>
         <input
