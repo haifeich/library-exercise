@@ -22,27 +22,30 @@ const Editbook = () => {
     e.preventDefault();
 
     const info = {
-      title: change.title.trim() || editBook.title,
-      author: change.author.trim() || editBook.author,
+      title: change.title || editBook.title,
+      author: change.author || editBook.author,
       pages: parseInt(change.pages) || editBook.pages,
       total_amount: parseInt(change.total_amount) || editBook.total_amount,
-      isbn: change.isbn.trim() || editBook.isbn,
+      isbn: change.isbn || editBook.isbn,
     };
-
-    if (info.isbn.length == 10 || info.isbn.length == 13) {
-      fetch(`${url}/${ID}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(info),
-      })
-        .then((response) => response.json())
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+    if (/^\s+$/.test(info.title) || /^\s+$/.test(info.author)) {
+      alert("Input can't be empty");
     } else {
-      alert("ISBNshould be 10 or 13 numbers");
+      if (info.isbn.length == 10 || info.isbn.length == 13) {
+        fetch(`${url}/${ID}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(info),
+        })
+          .then((response) => response.json())
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      } else {
+        alert("ISBNshould be 10 or 13 numbers");
+      }
     }
   };
 
@@ -108,9 +111,14 @@ const Editbook = () => {
           onChange={handleChange}
         />
         <br />
-        <button type="submit" className="button" onClick={handleSubmit}>
-          Save
-        </button>
+        <div>
+          <button type="submit" className="button" onClick={handleSubmit}>
+            Save
+          </button>
+          <Link to="/" className="button">
+            Back Home
+          </Link>
+        </div>
       </form>
     </div>
   );
