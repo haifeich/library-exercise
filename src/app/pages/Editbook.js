@@ -44,7 +44,7 @@ const Editbook = () => {
             console.error("Error:", error);
           });
       } else {
-        alert("ISBNshould be 10 or 13 numbers");
+        alert("ISBN should be 10 or 13 numbers");
       }
     }
   };
@@ -53,6 +53,7 @@ const Editbook = () => {
     const response = await fetch(`${url}/${ID}`);
     const editBook = await response.json();
     setEditBook(editBook);
+    setChange(editBook);
   };
   useEffect(() => {
     getEditBook();

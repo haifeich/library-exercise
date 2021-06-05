@@ -156,7 +156,6 @@ input[type="text"],
 input[type="number"] {
   border: 0.1rem solid #ccc;
   border-radius: 0.4rem;
-  color: rgb(248, 47, 47);
   font-size: 1.5rem;
   padding: 1rem 1.5rem;
 }
