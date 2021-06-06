@@ -28,7 +28,7 @@ const Add = () => {
     } else {
       const data = {
         ...addBook,
-        id: new Date().getTime().toString(),
+        // id: new Date().getTime().toString(),
         pages: parseInt(addBook.pages),
         total_amount: parseInt(addBook.total_amount),
       };
