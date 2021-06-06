@@ -93,7 +93,7 @@ const Add = () => {
           onChange={handleChange}
         />
         <br />
-        <div>
+        <div className="btngroup">
           <button type="submit" className="button" onClick={handleSubmit}>
             Add
           </button>

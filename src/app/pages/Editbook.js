@@ -112,7 +112,7 @@ const Editbook = () => {
           onChange={handleChange}
         />
         <br />
-        <div>
+        <div className="btngroup">
           <button type="submit" className="button" onClick={handleSubmit}>
             Save
           </button>

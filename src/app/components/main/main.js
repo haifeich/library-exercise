@@ -12,6 +12,16 @@ const Main = () => {
   useEffect(() => {
     getBooks();
   }, []);
+  const handleDelete = (id) => {
+    let newBooks = books.filter((book) => book.id !== id);
+    setBooks(newBooks);
+    const deleteBook = async () => {
+      await fetch(`${url}/${id}`, {
+        method: "DELETE",
+      });
+    };
+    deleteBook();
+  };
 
   return (
     <main>
@@ -28,10 +38,13 @@ const Main = () => {
                 <p>{`Total: ${total_amount}`}</p>
                 <p>{`ISBN: ${isbn}`}</p>
               </div>
-              <div>
+              <div className="btngroup">
                 <Link to={`/book/${id}`} className="button">
                   Edit
                 </Link>
+                <button className="button" onClick={() => handleDelete(id)}>
+                  Delete
+                </button>
               </div>
             </li>
           );
