@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <nav>
-      <h1>ti&m Library</h1>
+      <h1>
+        <Link to="/">ti&m Library</Link>
+      </h1>
       <ul className="linkscontainer">
         <li>
           <Link to="/">Home</Link>

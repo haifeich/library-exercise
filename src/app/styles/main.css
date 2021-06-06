@@ -49,10 +49,14 @@ nav {
   display: flex;
   justify-content: space-between;
 }
-
-h1 {
+nav a:hover {
   color: #014d9f;
+}
+h1 {
   margin: 1rem 0 1rem 2rem;
+}
+h1 a {
+  color: #014d9f;
 }
 ul.linkscontainer {
   display: flex;
@@ -117,8 +121,10 @@ footer {
   padding: 1rem;
 }
 footer h2 {
-  color: #fff;
   margin: 0;
+}
+h2 a {
+  color: #fff;
 }
 footer p {
   color: #fff;
