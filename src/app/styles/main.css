@@ -125,6 +125,13 @@ footer p {
   font-size: 1rem;
   margin-top: 1rem;
 }
+h3 {
+  color: rgb(233, 5, 5);
+  font-size: 1.5rem;
+  height: 1.5rem;
+  margin: 2rem auto -2rem auto;
+  text-align: center;
+}
 .form {
   background-color: #cfedeb;
   box-shadow: 0.2rem 0.5rem 0.3rem 0 rgba(0, 0, 0, 0.5);

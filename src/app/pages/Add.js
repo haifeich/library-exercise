@@ -4,13 +4,15 @@ const url = `https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books`;
 
 const Add = () => {
   const [addBook, setAddBook] = useState({
-    id: "",
+    // id: "",
     title: "",
     author: "",
     pages: "",
     total_amount: "",
     isbn: "",
   });
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -19,12 +21,19 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (/^\s+$/.test(addBook.title) || /^\s+$/.test(addBook.author)) {
-      alert("Input can't be empty");
-    } else if (addBook.pages === "0" || addBook.total_amount === "0") {
-      alert("Input can't be 0");
+    if (!addBook.title.trim()) {
+      setError("Title can't be empty");
+    } else if (/^\s+$/.test(addBook.author) || addBook.author == "") {
+      setError("Author can't be empty");
+    } else if (parseInt(addBook.pages) <= 0 || addBook.pages == "") {
+      setError("Pages should be a positive integer");
+    } else if (
+      parseInt(addBook.total_amount) <= 0 ||
+      addBook.total_amount == ""
+    ) {
+      setError("Total amount should be a positive integer");
     } else if (addBook.isbn.length !== 10 && addBook.isbn.length !== 13) {
-      alert("ISBN should be 10 or 13 numbers");
+      setError("ISBN should be 10 or 13 numbers");
     } else {
       const data = {
         ...addBook,
@@ -43,10 +52,20 @@ const Add = () => {
         .catch((error) => {
           console.error("Error:", error);
         });
+      setAddBook({
+        // id: "",
+        title: "",
+        author: "",
+        pages: "",
+        total_amount: "",
+        isbn: "",
+      });
+      setError("");
     }
   };
   return (
     <div>
+      <h3>{error}</h3>
       <form className="form">
         <label htmlFor="title">Title:</label>
         <input
