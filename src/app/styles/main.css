@@ -145,7 +145,7 @@ footer p {
   margin: 1rem;
   width: 80%;
 }
-.form div {
+.btngroup {
   display: flex;
   justify-content: space-evenly;
   margin-top: 1rem;
