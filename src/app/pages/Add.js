@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const url = `https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books`;
 
 const Add = () => {
@@ -41,17 +42,30 @@ const Add = () => {
         pages: parseInt(addBook.pages),
         total_amount: parseInt(addBook.total_amount),
       };
-      fetch(`${url}`, {
+      // fetch(`${url}`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(data),
+      // })
+      //   .then((response) => response.json())
+      //   .catch((error) => {
+      //     console.error("Error:", error);
+      //   });
+      const options = {
+        url: `${url}`,
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
         },
-        body: JSON.stringify(data),
-      })
-        .then((response) => response.json())
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+        data: data,
+      };
+
+      axios(options).then((response) => {
+        console.log(response.status);
+      });
       setAddBook({
         // id: "",
         title: "",
