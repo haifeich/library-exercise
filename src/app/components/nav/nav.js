@@ -14,9 +14,6 @@ const Nav = () => {
         <li>
           <Link to="/add">Add</Link>
         </li>
-        <li>
-          <Link to="/records">Records</Link>
-        </li>
       </ul>
       <div className="buttoncontainer">
         <button className="button">SIGN IN</button>

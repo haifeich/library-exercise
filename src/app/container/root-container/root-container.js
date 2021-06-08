@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../../pages/Home";
 import Add from "../../pages/Add";
 import Editbook from "../../pages/Editbook";
-import Records from "../../pages/Records";
 import Nav from "../../components/nav/nav";
 import Footer from "../../components/footer/footer";
 
@@ -18,9 +17,6 @@ class RootContainer extends React.PureComponent {
           </Route>
           <Route path="/add">
             <Add />
-          </Route>
-          <Route path="/records">
-            <Records />
           </Route>
           <Route path="/book/:ID" children={<Editbook />}></Route>
         </Switch>

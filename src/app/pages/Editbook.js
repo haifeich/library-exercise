@@ -64,6 +64,12 @@ const Editbook = () => {
 
   useEffect(() => {
     getEditBook();
+    const timer = setInterval(() => {
+      getEditBook();
+    }, 4000);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   return (
