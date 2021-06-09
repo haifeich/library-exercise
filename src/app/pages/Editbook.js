@@ -66,7 +66,7 @@ const Editbook = () => {
     getEditBook();
     const timer = setInterval(() => {
       getEditBook();
-    }, 4000);
+    }, 30000);
     return () => {
       clearInterval(timer);
     };
