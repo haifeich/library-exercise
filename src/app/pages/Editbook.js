@@ -5,7 +5,6 @@ const url = `https://5c6eb0534fa1c9001424240b.mockapi.io/api/v1/books`;
 
 const Editbook = () => {
   const { ID } = useParams();
-  const [editBook, setEditBook] = useState({});
   const [change, setChange] = useState({
     title: "",
     author: "",
@@ -13,61 +12,77 @@ const Editbook = () => {
     total_amount: "",
     isbn: "",
   });
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setChange({ ...change, [name]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const info = {
-      title: change.title || editBook.title,
-      author: change.author || editBook.author,
-      pages: parseInt(change.pages) || editBook.pages,
-      total_amount: parseInt(change.total_amount) || editBook.total_amount,
-      isbn: change.isbn || editBook.isbn,
-    };
-    if (/^\s+$/.test(info.title) || /^\s+$/.test(info.author)) {
-      alert("Input can't be empty");
+    if (!change.title.trim()) {
+      setError("Title can't be empty");
+    } else if (/^\s+$/.test(change.author) || change.author == "") {
+      setError("Author can't be empty");
+    } else if (parseInt(change.pages) <= 0 || change.pages == "") {
+      setError("Pages should be a positive integer");
+    } else if (
+      parseInt(change.total_amount) <= 0 ||
+      change.total_amount == ""
+    ) {
+      setError("Total amount should be a positive integer");
+    } else if (change.isbn.length !== 10 && change.isbn.length !== 13) {
+      setError("ISBN should be 10 or 13 numbers");
     } else {
-      if (info.isbn.length == 10 || info.isbn.length == 13) {
-        fetch(`${url}/${ID}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(info),
-        })
-          .then((response) => response.json())
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      } else {
-        alert("ISBN should be 10 or 13 numbers");
-      }
+      const info = {
+        ...change,
+        pages: parseInt(change.pages),
+        total_amount: parseInt(change.total_amount),
+      };
+      fetch(`${url}/${ID}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(info),
+      })
+        .then((response) => response.json())
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      setError("");
     }
   };
 
   const getEditBook = async () => {
     const response = await fetch(`${url}/${ID}`);
     const editBook = await response.json();
-    setEditBook(editBook);
     setChange(editBook);
   };
+
   useEffect(() => {
     getEditBook();
+    const timer = setInterval(() => {
+      getEditBook();
+    }, 30000);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   return (
     <div>
-      <form key={editBook.id} className="form">
+      <p className="error-message" role="alert">
+        {error}
+      </p>
+      <form className="form">
         <label htmlFor="title">Title:</label>
         <input
           type="text"
           name="title"
           id="title"
-          placeholder={editBook.title}
           value={change.title}
           onChange={handleChange}
         />
@@ -77,7 +92,6 @@ const Editbook = () => {
           type="text"
           name="author"
           id="author"
-          placeholder={editBook.author}
           value={change.author}
           onChange={handleChange}
         />
@@ -87,7 +101,6 @@ const Editbook = () => {
           type="number"
           name="pages"
           id="pages"
-          placeholder={editBook.pages}
           value={change.pages}
           onChange={handleChange}
         />
@@ -97,7 +110,6 @@ const Editbook = () => {
           type="number"
           name="total_amount"
           id="total_amount"
-          placeholder={editBook.total_amount}
           value={change.total_amount}
           onChange={handleChange}
         />
@@ -107,16 +119,20 @@ const Editbook = () => {
           type="number"
           name="isbn"
           id="isbn"
-          placeholder={editBook.isbn}
           value={change.isbn}
           onChange={handleChange}
         />
         <br />
         <div className="btngroup">
-          <button type="submit" className="button" onClick={handleSubmit}>
+          <button
+            aria-label="save changes"
+            type="submit"
+            className="button"
+            onClick={handleSubmit}
+          >
             Save
           </button>
-          <Link to="/" className="button">
+          <Link to="/" className="button" aria-label="back to homepage">
             Back Home
           </Link>
         </div>

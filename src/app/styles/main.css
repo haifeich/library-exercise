@@ -24,6 +24,9 @@ a {
   text-decoration: none;
   color: #000;
 }
+:focus {
+  outline-offset: 5px;
+}
 .button {
   background: transparent;
   border: 0.15rem solid #014d9f;
@@ -44,15 +47,19 @@ a {
   height: 100%;
   grid-template-rows: auto 1fr auto;
 }
-nav {
+header {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
 }
-
-h1 {
+header a:hover {
   color: #014d9f;
+}
+h1 {
   margin: 1rem 0 1rem 2rem;
+}
+h1 a {
+  color: #014d9f;
 }
 ul.linkscontainer {
   display: flex;
@@ -95,7 +102,7 @@ h2 {
   padding: 1rem;
 }
 
-.book h4 {
+.book h3 {
   border-bottom: 0.5px dotted #617d98;
   flex: 1;
   font-size: 1.5rem;
@@ -117,13 +124,22 @@ footer {
   padding: 1rem;
 }
 footer h2 {
-  color: #fff;
   margin: 0;
+}
+h2 a {
+  color: #fff;
 }
 footer p {
   color: #fff;
   font-size: 1rem;
   margin-top: 1rem;
+}
+.error-message {
+  color: rgb(233, 5, 5);
+  font-size: 1.5rem;
+  height: 1.5rem;
+  margin: 2rem auto -2rem auto;
+  text-align: center;
 }
 .form {
   background-color: #cfedeb;
