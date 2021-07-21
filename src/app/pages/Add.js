@@ -79,7 +79,9 @@ const Add = () => {
   };
   return (
     <div>
-      <h3>{error}</h3>
+      <p className="error-message" role="alert">
+        {error}
+      </p>
       <form className="form">
         <label htmlFor="title">Title:</label>
         <input

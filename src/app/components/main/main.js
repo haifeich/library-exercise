@@ -31,7 +31,7 @@ const Main = () => {
           const { id, title, author, total_amount, pages, isbn } = book;
           return (
             <li key={id} className="book">
-              <h4>{title}</h4>
+              <h3>{title}</h3>
               <div>
                 <p>{`Author: ${author}`}</p>
                 <p>{`Pages: ${pages}`}</p>
@@ -42,7 +42,17 @@ const Main = () => {
                 <Link to={`/book/${id}`} className="button">
                   Edit
                 </Link>
-                <button className="button" onClick={() => handleDelete(id)}>
+                <button
+                  className="button"
+                  onClick={() => {
+                    const confirmBox = window.confirm(
+                      "Do you really want to delete this Book?"
+                    );
+                    if (confirmBox === true) {
+                      handleDelete(id);
+                    }
+                  }}
+                >
                   Delete
                 </button>
               </div>

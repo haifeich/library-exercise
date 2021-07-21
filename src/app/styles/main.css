@@ -24,6 +24,9 @@ a {
   text-decoration: none;
   color: #000;
 }
+:focus {
+  outline-offset: 5px;
+}
 .button {
   background: transparent;
   border: 0.15rem solid #014d9f;
@@ -99,7 +102,7 @@ h2 {
   padding: 1rem;
 }
 
-.book h4 {
+.book h3 {
   border-bottom: 0.5px dotted #617d98;
   flex: 1;
   font-size: 1.5rem;
@@ -131,7 +134,7 @@ footer p {
   font-size: 1rem;
   margin-top: 1rem;
 }
-h3 {
+.error-message {
   color: rgb(233, 5, 5);
   font-size: 1.5rem;
   height: 1.5rem;

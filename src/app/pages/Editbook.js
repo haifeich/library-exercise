@@ -74,7 +74,9 @@ const Editbook = () => {
 
   return (
     <div>
-      <h3>{error}</h3>
+      <p className="error-message" role="alert">
+        {error}
+      </p>
       <form className="form">
         <label htmlFor="title">Title:</label>
         <input
@@ -125,7 +127,7 @@ const Editbook = () => {
           <button type="submit" className="button" onClick={handleSubmit}>
             Save
           </button>
-          <Link to="/" className="button">
+          <Link to="/" className="button" aria-label="back to homepage">
             Back Home
           </Link>
         </div>

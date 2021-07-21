@@ -4,7 +4,11 @@ const Footer = () => {
   return (
     <footer>
       <h2>
-        <a href="https://www.ti8m.com/" target="_blank">
+        <a
+          aria-label="vist ti&m homepage"
+          href="https://www.ti8m.com/"
+          target="_blank"
+        >
           ti&m
         </a>
       </h2>
