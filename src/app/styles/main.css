@@ -47,12 +47,12 @@ a {
   height: 100%;
   grid-template-rows: auto 1fr auto;
 }
-nav {
+header {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
 }
-nav a:hover {
+header a:hover {
   color: #014d9f;
 }
 h1 {

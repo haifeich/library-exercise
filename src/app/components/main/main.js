@@ -39,10 +39,15 @@ const Main = () => {
                 <p>{`ISBN: ${isbn}`}</p>
               </div>
               <div className="btngroup">
-                <Link to={`/book/${id}`} className="button">
+                <Link
+                  to={`/book/${id}`}
+                  className="button"
+                  aria-label="edit book"
+                >
                   Edit
                 </Link>
                 <button
+                  aria-label="delete book"
                   className="button"
                   onClick={() => {
                     const confirmBox = window.confirm(

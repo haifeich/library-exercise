@@ -129,7 +129,12 @@ const Add = () => {
         />
         <br />
         <div className="btngroup">
-          <button type="submit" className="button" onClick={handleSubmit}>
+          <button
+            aria-label="add book"
+            type="submit"
+            className="button"
+            onClick={handleSubmit}
+          >
             Add
           </button>
           <Link to="/" className="button">

@@ -124,7 +124,12 @@ const Editbook = () => {
         />
         <br />
         <div className="btngroup">
-          <button type="submit" className="button" onClick={handleSubmit}>
+          <button
+            aria-label="save changes"
+            type="submit"
+            className="button"
+            onClick={handleSubmit}
+          >
             Save
           </button>
           <Link to="/" className="button" aria-label="back to homepage">
