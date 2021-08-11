@@ -24,13 +24,13 @@ const Main = () => {
   };
 
   return (
-    <main>
+    <main id="main">
       <h2>All the books</h2>
       <ul className="bookcontainer">
         {books.map((book) => {
           const { id, title, author, total_amount, pages, isbn } = book;
           return (
-            <li key={id} className="book">
+            <li key={id} className="book" tabIndex="-1">
               <h3>{title}</h3>
               <div>
                 <p>{`Author: ${author}`}</p>
@@ -42,12 +42,12 @@ const Main = () => {
                 <Link
                   to={`/book/${id}`}
                   className="button"
-                  aria-label="edit book"
+                  aria-label={`edit book ${title}`}
                 >
                   Edit
                 </Link>
                 <button
-                  aria-label="delete book"
+                  aria-label={`delete book ${title}`}
                   className="button"
                   onClick={() => {
                     const confirmBox = window.confirm(

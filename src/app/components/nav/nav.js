@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <header>
+      <a href="#main" className="skip-nav-link">
+        Skip to main content
+      </a>
       <h1>
         <Link to="/">ti&m Library</Link>
       </h1>
